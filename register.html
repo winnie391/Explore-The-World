@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Explore the World</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body data-theme="light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-globe-americas"></i> Explore the World
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="travel-tips.html">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tools.html">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
+                    </li>
+                </ul>
+                <!-- Header User Info -->
+                <div id="header-user-info" class="d-none d-lg-flex align-items-center ms-3 me-3">
+                    <!-- Will be populated by auth.js -->
+                </div>
+                <!-- Auth Navigation -->
+                <ul class="navbar-nav ms-auto auth-nav">
+                    <!-- Will be populated by auth.js -->
+                </ul>
+                <!-- Theme Toggle -->
+                <div class="theme-toggle-container">
+                    <label class="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="theme-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Register Section -->
+    <section class="register-section py-5">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <div class="card shadow-sm">
+                        <div class="card-body p-4">
+                            <h3 class="text-center mb-4">Create an Account</h3>
+                            
+                            <!-- Social Registration Options -->
+                            <div class="social-register mb-4">
+                                <p class="text-center mb-3">Quick sign up with</p>
+                                <div class="d-flex justify-content-center gap-3">
+                                    <button class="btn btn-outline-danger" id="googleRegisterBtn">
+                                        <i class="fab fa-google"></i> Google
+                                    </button>
+                                    <button class="btn btn-outline-primary" id="facebookRegisterBtn">
+                                        <i class="fab fa-facebook-f"></i> Facebook
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="text-center mb-4">
+                                <span class="divider-text">Or register with email</span>
+                            </div>
+
+                            <!-- Registration Form -->
+                            <form id="registerForm">
+                                <div class="mb-3">
+                                    <label for="fullName" class="form-label">Full Name</label>
+                                    <input type="text" class="form-control" id="fullName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email address</label>
+                                    <input type="email" class="form-control" id="email" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="password" class="form-label">Password</label>
+                                    <input type="password" class="form-control" id="password" required 
+                                           pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" 
+                                           title="Password must be at least 8 characters long and include both letters and numbers">
+                                    <small class="text-muted">Must be at least 8 characters long and include both letters and numbers</small>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword" required>
+                                </div>
+                                <div class="mb-3 form-check">
+                                    <input type="checkbox" class="form-check-input" id="termsAccept" required>
+                                    <label class="form-check-label" for="termsAccept">
+                                        I accept the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a>
+                                    </label>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Create Account</button>
+                                <div id="registerMessage" class="mt-3 text-center"></div>
+                            </form>
+
+                            <div class="text-center mt-3">
+                                <p>Already have an account? <a href="login.html" class="text-decoration-none">Login</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-analytics.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAb6bp6ot5tWz16b1qJzv_30VxJR87nzW8",
+            authDomain: "gallery-1609e.firebaseapp.com",
+            projectId: "gallery-1609e",
+            storageBucket: "gallery-1609e.firebasestorage.app",
+            messagingSenderId: "616484716286",
+            appId: "1:616484716286:web:2cdfe99e8698e03687afaf",
+            measurementId: "G-F4VM09MT90"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+        window.auth = getAuth(app);
+        window.db = getFirestore(app);
+    </script>
+    
+    <!-- Custom JS -->
+    <script type="module" src="js/auth.js"></script>
+    
+    <!-- Auth Status Check -->
+    <script type="module">
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        
+        const auth = getAuth();
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                console.log('User is signed in:', user.email);
+                document.getElementById('registerMessage').innerHTML = 
+                    `<div class="alert alert-success">Already logged in as ${user.email}. Redirecting to gallery...</div>`;
+                
+                // Redirect to gallery if already logged in
+                setTimeout(() => {
+                    window.location.href = 'gallery.html';
+                }, 1500);
+            } else {
+                console.log('No user is signed in');
+            }
+        });
+    </script>
+    
+    <!-- User Profile Header -->
+    <script type="module" src="js/user-profile.js"></script>
+</body>
+</html> 

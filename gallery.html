@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery - Explore the World</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/typography.css">
+</head>
+<body data-theme="light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-globe-americas"></i> Explore the World
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="travel-tips.html">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="tools.html">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Header User Info -->
+                <div id="header-user-info" class="d-none d-lg-flex align-items-center ms-3 me-3">
+                    <!-- Will be populated by auth.js -->
+                </div>
+                <!-- Auth Navigation -->
+                <ul class="navbar-nav ms-auto auth-nav">
+                    <!-- Will be populated by auth.js -->
+                </ul>
+                <!-- Theme Toggle -->
+                <div class="theme-toggle-container">
+                    <label class="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="theme-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-white">Photo Gallery</h1>
+            <p class="lead text-white">Explore our collection of stunning travel moments</p>
+            <div id="upload-btn-container" class="mt-3" style="display: none;">
+                <a href="upload-image.html" class="btn btn-primary">
+                    <i class="fas fa-upload me-2"></i>Upload Your Photo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Firebase Rules Alert -->
+    <div class="container mt-4">
+        <div class="alert alert-warning alert-dismissible fade show" role="alert" id="firebase-rules-alert">
+            <h5 class="alert-heading"><i class="fas fa-exclamation-triangle me-2"></i>Firebase Permissions Notice</h5>
+            <p>If you see <strong>"Missing or insufficient permissions"</strong> errors, you need to update your Firebase security rules:</p>
+            <ol>
+                <li>Go to the <a href="https://console.firebase.google.com/" target="_blank" class="alert-link">Firebase Console</a></li>
+                <li>Select your project</li>
+                <li>Navigate to <strong>Firestore Database > Rules</strong></li>
+                <li>Add the following rules for likes and comments collections:</li>
+            </ol>
+            <pre class="bg-dark text-light p-3 rounded"><code>rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow read access to images
+    match /images/{imageId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+    
+    // User profiles
+    match /users/{userId} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.uid == userId;
+    }
+    
+    // Likes
+    match /likes/{likeId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow delete: if request.auth != null && 
+                   (likeId.split('_')[1] == request.auth.uid || 
+                    get(/databases/$(database)/documents/images/$(likeId.split('_')[0])).data.userId == request.auth.uid);
+    }
+    
+    // Comments
+    match /comments/{commentId} {
+      allow read: if true;
+      allow create: if request.auth != null;
+      allow update, delete: if request.auth != null && request.auth.uid == resource.data.userId;
+    }
+  }
+}
+</code></pre>
+            <p>After adding these rules, publish them and reload this page.</p>
+            <div class="mt-3">
+                <a href="firebase-setup-guide.html" class="btn btn-primary">
+                    <i class="fas fa-info-circle me-2"></i>View Detailed Setup Guide
+                </a>
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" onclick="localStorage.setItem('hideFirebaseRulesAlert', 'true');"></button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <section class="gallery-content py-5">
+        <div class="container">
+            <!-- Gallery Filters -->
+            <div class="gallery-filters mb-5">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="d-flex flex-wrap justify-content-center gap-2">
+                            <button class="btn btn-outline-primary active" data-filter="all">All</button>
+                            <button class="btn btn-outline-primary" data-filter="nature">Nature</button>
+                            <button class="btn btn-outline-primary" data-filter="cities">Cities</button>
+                            <button class="btn btn-outline-primary" data-filter="culture">Culture</button>
+                            <button class="btn btn-outline-primary" data-filter="food">Food</button>
+                            <button class="btn btn-outline-primary" data-filter="adventure">Adventure</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery Grid -->
+            <div class="row g-4" id="gallery-grid">
+                <!-- Gallery items will be loaded dynamically -->
+            </div>
+
+            <!-- Load More Button -->
+            <div class="text-center mt-5">
+                <button class="btn btn-primary" id="load-more">Load More</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-white">Explore the World</h5>
+                    <p class="text-muted">Your ultimate guide to discovering the world's most beautiful destinations,
+                        travel
+                        tips, and cultural insights.🌍✨</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/exploretheworld.151375?mibextid=wwXIfr&rdid=tDgGR4odQE0hs0mX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F165fckGWBd%2F%3Fmibextid%3DwwXIfr#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/exploretheworld_2323/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="travel-tips.html">Travel Tips</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="packing-essentials.html">Packing Guides</a></li>
+                        <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                        <li><a href="contact.html#faqs">FAQs</a></li>
+                        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="text-white">Contact Us</h5>
+                    <ul class="list-unstyled contact-info">
+                        <li class="mb-3">
+                            <strong class="d-block mb-1">Sungai Long Campus:</strong>
+                            <i class="fas fa-map-marker-alt"></i> Universiti Tunku Abdul Rahman, Jalan Sungai Long,
+                            Bandar Sungai Long, 43000 Kajang, Selangor, Malaysia
+                        </li>
+                        <li class="mb-3">
+                            <strong class="d-block mb-1">Kampar Campus:</strong>
+                            <i class="fas fa-map-marker-alt"></i> Universiti Tunku Abdul Rahman, Jalan Universiti,
+                            Bandar Barat, 31900 Kampar, Perak, Malaysia
+                        </li>
+                        <li><i class="fas fa-phone"></i> +603-9086 0288 (Sungai Long)</li>
+                        <li><i class="fas fa-phone"></i> +605-468 8888 (Kampar)</li>
+                        <li><i class="fas fa-envelope"></i> info@utar.edu.my</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright">© 2025 Explore the World. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Lightbox JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <!-- Gallery Filter JS -->
+    <script>
+        $(document).ready(function() {
+            // Gallery filter functionality
+            $('.gallery-filters button').on('click', function() {
+                const filter = $(this).data('filter');
+                
+                // Update active state
+                $('.gallery-filters button').removeClass('active');
+                $(this).addClass('active');
+                
+                if (filter === 'all') {
+                    $('.gallery-item').show();
+                } else {
+                    $('.gallery-item').hide();
+                    $('.gallery-item[data-category="' + filter + '"]').show();
+                }
+            });
+
+            // Initialize Lightbox
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'showImageNumberLabel': false
+            });
+            
+            // Manual setup of event listeners for likes and comments
+            $('.like-btn').on('click', function(e) {
+                e.preventDefault();
+                const photoId = $(this).data('photo-id');
+                console.log('Like button clicked for photo:', photoId);
+                
+                // Call the handleLikeClick function if it's available
+                if (typeof window.handleLikeClick === 'function') {
+                    window.handleLikeClick({ currentTarget: this });
+                }
+            });
+            
+            $('.comment-toggle-btn').on('click', function(e) {
+                e.preventDefault();
+                const photoId = $(this).data('photo-id');
+                console.log('Comment toggle clicked for photo:', photoId);
+                
+                const commentsSection = $('#comments-' + photoId);
+                if (commentsSection.length) {
+                    if (commentsSection.is(':visible')) {
+                        commentsSection.hide();
+                    } else {
+                        commentsSection.show();
+                        
+                        // Call loadComments if available
+                        if (typeof window.loadComments === 'function') {
+                            window.loadComments(photoId);
+                        }
+                    }
+                }
+            });
+            
+            $('.comment-form').on('submit', function(e) {
+                e.preventDefault();
+                const photoId = $(this).data('photo-id');
+                const input = $(this).find('input');
+                const commentText = input.val().trim();
+                
+                console.log('Comment submitted for photo:', photoId, 'Text:', commentText);
+                
+                // Call the handleCommentSubmit function if it's available
+                if (typeof window.handleCommentSubmit === 'function') {
+                    window.handleCommentSubmit({ 
+                        preventDefault: () => {},
+                        currentTarget: this 
+                    });
+                }
+            });
+        });
+    </script>
+
+    <!-- Firebase Scripts -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        import { 
+            getFirestore, 
+            collection, 
+            getDocs, 
+            query, 
+            orderBy, 
+            limit, 
+            doc, 
+            setDoc, 
+            deleteDoc,
+            getDoc,
+            addDoc,
+            updateDoc,
+            arrayUnion,
+            arrayRemove,
+            serverTimestamp,
+            where
+        } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+        import { getStorage } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-storage.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAb6bp6ot5tWz16b1qJzv_30VxJR87nzW8",
+            authDomain: "gallery-1609e.firebaseapp.com",
+            projectId: "gallery-1609e",
+            storageBucket: "gallery-1609e.firebasestorage.app",
+            messagingSenderId: "616484716286",
+            appId: "1:616484716286:web:2cdfe99e8698e03687afaf",
+            measurementId: "G-F4VM09MT90"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const storage = getStorage(app);
+        
+        // Check authentication status and show upload button if logged in
+        onAuthStateChanged(auth, (user) => {
+            const uploadBtnContainer = document.getElementById('upload-btn-container');
+            if (user) {
+                uploadBtnContainer.style.display = 'block';
+            } else {
+                uploadBtnContainer.style.display = 'none';
+            }
+        });
+        
+        // Make functions available globally
+        window.db = db;
+        window.collection = collection;
+        window.getDocs = getDocs;
+        window.query = query;
+        window.orderBy = orderBy;
+        window.limit = limit;
+        window.doc = doc;
+        window.setDoc = setDoc;
+        window.deleteDoc = deleteDoc;
+        window.getDoc = getDoc;
+        window.addDoc = addDoc;
+        window.updateDoc = updateDoc;
+        window.serverTimestamp = serverTimestamp;
+        window.where = where;
+        window.arrayUnion = arrayUnion;
+        window.arrayRemove = arrayRemove;
+    </script>
+    
+    <!-- Custom JS -->
+    <script type="module">
+        import { 
+            handleLikeClick, 
+            handleCommentToggle, 
+            handleCommentSubmit, 
+            loadComments, 
+            loadLikesCount,
+            setupDynamicGalleryItem,
+            loadMoreImages
+        } from './js/gallery.js';
+        
+        // Make functions available for jQuery handlers
+        window.handleLikeClick = handleLikeClick;
+        window.handleCommentToggle = handleCommentToggle;
+        window.handleCommentSubmit = handleCommentSubmit;
+        window.loadComments = loadComments;
+        window.setupDynamicGalleryItem = setupDynamicGalleryItem;
+        window.loadMoreImages = loadMoreImages;
+    </script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/gallery.js"></script>
+    <script type="module" src="js/theme.js"></script>
+    
+    <!-- User Profile Header -->
+    <script type="module" src="js/user-profile.js"></script>
+</body>
+</html> 

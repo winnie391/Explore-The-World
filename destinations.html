@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Updated Content Security Policy with allowed sources -->
+  <meta http-equiv="Content-Security-Policy"
+    content="
+    default-src 'self' https://www.gstatic.com https://en.wikivoyage.org https://source.unsplash.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.bunny.net;
+    connect-src 'self' https://*.firebaseio.com https://*.googleapis.com https://www.googleapis.com https://*.firebase.googleapis.com https://*.firestore.googleapis.com https://*.wikivoyage.org https://*.wikipedia.org https://en.wikivoyage.org https://wikivoyage.org https://en.wikivoyage.org/w/api.php https://*.wikimedia.org https://upload.wikimedia.org https://commons.wikimedia.org https://*.google-analytics.com https://google-analytics.com https://analytics.google.com https://*.analytics.google.com;
+    script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com;
+    script-src-elem 'self' 'unsafe-inline' https://www.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://www.googletagmanager.com;
+    style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://fonts.bunny.net;
+    font-src 'self' https://fonts.bunny.net https://cdnjs.cloudflare.com;
+    img-src 'self' data: https://www.gstatic.com https://source.unsplash.com https://images.unsplash.com https://*.googleapis.com https://*.wikivoyage.org https://*.wikipedia.org https://*.wikimedia.org https://upload.wikimedia.org https://commons.wikimedia.org;">
+
+  <title>Destinations - Explore the World</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/tips-info.css">
+  <link rel="stylesheet" href="css/typography.css">
+
+</head>
+
+<body data-theme="light">
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top" aria-label="Main Navigation">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <i class="fas fa-globe-americas"></i> Explore the World
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="destinations.html">Destinations</a></li>
+          <li class="nav-item">
+            <a class="nav-link" href="travel-tips.html">Tips</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="gallery.html">Gallery</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tools.html">Tools</a>
+          </li>
+          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+        <!-- Header User Info -->
+        <div id="header-user-info" class="d-none d-lg-flex align-items-center ms-3 me-3">
+          <!-- Will be populated by user-profile.js -->
+        </div>
+        <!-- Auth Navigation -->
+        <ul class="navbar-nav ms-auto auth-nav">
+          <!-- Will be populated by auth.js -->
+        </ul>
+        <!-- Theme Toggle -->
+        <div class="theme-toggle-container">
+          <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="theme-toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Header with Background Image -->
+  <header class="page-header text-center text-white d-flex align-items-center"
+    style="min-height: 60vh; background: url('https://images.unsplash.com/photo-1682687982183-c2937a74257c?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') no-repeat center center/cover; position: relative;">
+    <div class="overlay" style="position: absolute; top: 0; left: 0; right:0; bottom:0; background: rgba(0,0,0,0.5);">
+    </div>
+    <div class="container position-relative" style="z-index: 2;">
+      <h1 class="display-3 fw-bold">Explore Destinations</h1>
+      <p class="lead">Discover amazing places around the world</p>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="destination-page-container">
+    <!-- Destination 1 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1521292270410-a8c4d716d518?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Swiss Alps, Switzerland</h3>
+      <p class="page-card-desc">
+        Perfect for skiing in winter and hiking in summer
+      </p>
+      <a href="destinations-details.html?destinations=Swiss Alps" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 2 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1573790387438-4da905039392?q=80&w=1925&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Bali, Indonesia</h3>
+      <p class="page-card-desc">
+        Tropical paradise with rich cultural heritage
+      </p>
+      <a href="destinations-details.html?destinations=Bali" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 3 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1516470047996-b6dde636095f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Iceland</h3>
+      <p class="page-card-desc">
+        Northern Lights and dramatic landscapes
+      </p>
+      <a href="destinations-details.html?destinations=Iceland" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 4 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1548786811-dd6e453ccca7?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Petra, Jordan</h3>
+      <p class="page-card-desc">
+        Ancient city carved in rose-colored rock
+      </p>
+      <a href="destinations-details.html?destinations=Petra" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 5 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1562559094-0739564bbc71?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Costa Rica</h3>
+      <p class="page-card-desc">
+        Rainforests, volcanoes, and beautiful beaches
+      </p>
+      <a href="destinations-details.html?destinations=Costa Rica" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 6 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1578469645742-46cae010e5d4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Kyoto, Japan</h3>
+      <p class="page-card-desc">
+        Traditional Japanese culture and cherry blossoms
+      </p>
+      <a href="destinations-details.html?destinations=Kyoto" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 7 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1512017615494-fdf6146235ff?q=80&w=2068&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Queenstown, New Zealand</h3>
+      <p class="page-card-desc">
+        Adventure capital of the world
+      </p>
+      <a href="destinations-details.html?destinations=Queenstown" class="explore-button">Explore</a>
+    </div>
+
+    <!-- Destination 8 -->
+    <div class="destination-page-card"
+      style="background-image: url('https://images.unsplash.com/photo-1573843981267-be1999ff37cd?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');">
+      <h3 class="page-card-title">Maldives</h3>
+      <p class="page-card-desc">
+        Luxury overwater villas and pristine beaches
+      </p>
+      <a href="destinations-details.html?destinations=Maldives" class="explore-button">Explore</a>
+    </div>
+  </div>
+
+
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-4 mb-4 mb-lg-0">
+                  <h5 class="text-white">Explore the World</h5>
+                  <p class="text-muted">Your ultimate guide to discovering the world's most beautiful destinations,
+                      travel
+                      tips, and cultural insights.🌍✨</p>
+                  <div class="social-icons">
+                      <a href="https://www.facebook.com/exploretheworld.151375?mibextid=wwXIfr&rdid=tDgGR4odQE0hs0mX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F165fckGWBd%2F%3Fmibextid%3DwwXIfr#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                      <a href="https://www.instagram.com/exploretheworld_2323/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                  </div>
+              </div>
+              <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                  <h5 class="text-white">Quick Links</h5>
+                  <ul class="list-unstyled footer-links">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="destinations.html">Destinations</a></li>
+                      <li><a href="travel-tips.html">Travel Tips</a></li>
+                      <li><a href="gallery.html">Gallery</a></li>
+                      <li><a href="contact.html">Contact</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                  <h5 class="text-white">Resources</h5>
+                  <ul class="list-unstyled footer-links">
+                      <li><a href="packing-essentials.html">Packing Guides</a></li>
+                      <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                      <li><a href="contact.html#faqs">FAQs</a></li>
+                      <li><a href="contact.html#privacy">Privacy Policy</a></li>
+                  </ul>
+              </div>
+              <div class="col-lg-4 col-md-4">
+                  <h5 class="text-white">Contact Us</h5>
+                  <ul class="list-unstyled contact-info">
+                      <li class="mb-3">
+                          <strong class="d-block mb-1">Sungai Long Campus:</strong>
+                          <i class="fas fa-map-marker-alt"></i> Universiti Tunku Abdul Rahman, Jalan Sungai Long,
+                          Bandar Sungai Long, 43000 Kajang, Selangor, Malaysia
+                      </li>
+                      <li class="mb-3">
+                          <strong class="d-block mb-1">Kampar Campus:</strong>
+                          <i class="fas fa-map-marker-alt"></i> Universiti Tunku Abdul Rahman, Jalan Universiti,
+                          Bandar Barat, 31900 Kampar, Perak, Malaysia
+                      </li>
+                      <li><i class="fas fa-phone"></i> +603-9086 0288 (Sungai Long)</li>
+                      <li><i class="fas fa-phone"></i> +605-468 8888 (Kampar)</li>
+                      <li><i class="fas fa-envelope"></i> info@utar.edu.my</li>
+                  </ul>
+              </div>
+          </div>
+          <hr class="footer-divider">
+          <div class="row">
+              <div class="col-md-12 text-center">
+                  <p class="copyright">© 2025 Explore the World. All Rights Reserved.</p>
+              </div>
+          </div>
+      </div>
+  </footer>
+
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Firebase Scripts -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+    import { getFirestore } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+        apiKey: "AIzaSyAb6bp6ot5tWz16b1qJzv_30VxJR87nzW8",
+        authDomain: "gallery-1609e.firebaseapp.com",
+        projectId: "gallery-1609e",
+        storageBucket: "gallery-1609e.firebasestorage.app",
+        messagingSenderId: "616484716286",
+        appId: "1:616484716286:web:2cdfe99e8698e03687afaf",
+        measurementId: "G-F4VM09MT90"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    window.auth = getAuth(app);
+    window.db = getFirestore(app);
+  </script>
+  
+  <!-- Custom Scripts -->
+  <script src="js/theme.js" type="module"></script>
+  <script src="js/firebase-config.js" type="module"></script>
+  <script src="js/wikivoyage-service.js" type="module"></script>
+  <script src="js/destinations.js" type="module"></script>
+  <script src="js/auth.js" type="module"></script>
+  <script src="js/user-profile.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Card Component Example</title>
+    <!-- Bootstrap CSS (optional, just for container layout) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/blog-card.css">
+</head>
+<body data-theme="light">
+    <!-- Add your site header/navigation here -->
+
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="text-center mb-4">Blog Cards Example</h2>
+                
+                <!-- Blog Card - Example 1 -->
+                <div class="blog-card">
+                    <div class="blog-card-image">
+                        <div class="blog-card-image-container">
+                            <img src="https://images.unsplash.com/photo-1553913861-c0fddf2619ee" alt="Packing Guide">
+                        </div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-tag">Travel Tips</div>
+                        <h3 class="blog-card-title">Ultimate Packing Guide for Any Trip</h3>
+                        <p class="blog-card-description">Learn how to pack efficiently for any type of trip, from weekend getaways to long-term adventures. Our comprehensive guide covers everything you need to know.</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-card-author">
+                                <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="" class="blog-card-author-avatar">
+                                <span class="blog-card-author-name">By Sarah Johnson</span>
+                            </div>
+                            <span class="blog-card-date">June 15, 2023</span>
+                        </div>
+                        <a href="packing-essentials.html" class="blog-card-cta">
+                            Read Full Guide
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Card - Example 2 -->
+                <div class="blog-card">
+                    <div class="blog-card-image">
+                        <div class="blog-card-image-container">
+                            <img src="https://images.unsplash.com/photo-1554774853-719586f82d77" alt="Budget Travel">
+                        </div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-tag">Budget</div>
+                        <h3 class="blog-card-title">10 Budget Travel Hacks That Actually Work</h3>
+                        <p class="blog-card-description">Discover smart ways to save money while traveling without compromising on experiences. These proven hacks will help you stretch your travel budget further.</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-card-author">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="" class="blog-card-author-avatar">
+                                <span class="blog-card-author-name">By Michael Chen</span>
+                            </div>
+                            <span class="blog-card-date">May 28, 2023</span>
+                        </div>
+                        <a href="budget-hacks.html" class="blog-card-cta">
+                            Read Full Guide
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Card - Example 3 -->
+                <div class="blog-card">
+                    <div class="blog-card-image">
+                        <div class="blog-card-image-container">
+                            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" alt="Food Culture">
+                        </div>
+                    </div>
+                    <div class="blog-card-content">
+                        <div class="blog-card-tag">Food & Culture</div>
+                        <h3 class="blog-card-title">How to Experience Local Cuisine Like a Pro</h3>
+                        <p class="blog-card-description">Tips for experiencing local cuisine and respecting cultural norms while traveling abroad. Learn how to find authentic food and navigate dining etiquette around the world.</p>
+                        <div class="blog-card-meta">
+                            <div class="blog-card-author">
+                                <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="" class="blog-card-author-avatar">
+                                <span class="blog-card-author-name">By Maria Rodriguez</span>
+                            </div>
+                            <span class="blog-card-date">June 5, 2023</span>
+                        </div>
+                        <a href="food-culture.html" class="blog-card-cta">
+                            Read Full Guide
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add your site footer here -->
+    
+    <!-- Toggle Theme Button (optional) -->
+    <div class="theme-toggle-container position-fixed bottom-0 end-0 m-3">
+        <label class="theme-toggle">
+            <input type="checkbox" id="theme-toggle">
+            <span class="theme-toggle-slider"></span>
+        </label>
+    </div>
+
+    <!-- Bootstrap JS Bundle with Popper (optional) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Theme Toggle Script (optional) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const themeToggle = document.getElementById('theme-toggle');
+            const body = document.body;
+
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme) {
+                body.setAttribute('data-theme', savedTheme);
+                themeToggle.checked = savedTheme === 'dark';
+            }
+
+            // Handle theme toggle
+            themeToggle?.addEventListener('change', function() {
+                const newTheme = this.checked ? 'dark' : 'light';
+                body.setAttribute('data-theme', newTheme);
+                localStorage.setItem('theme', newTheme);
+            });
+        });
+    </script>
+</body>
+</html> 

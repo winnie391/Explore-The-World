@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Tools - Explore the World</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/typography.css">
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+</head>
+
+<body data-theme="light">
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-globe-americas"></i> Explore the World
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="destinations.html">Destinations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="travel-tips.html">Tips</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="gallery.html">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="tools.html">Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                <!-- Header User Info -->
+                <div id="header-user-info" class="d-none d-lg-flex align-items-center ms-3 me-3">
+                    <!-- Will be populated by user-profile.js -->
+                </div>
+                <!-- Auth Navigation -->
+                <ul class="navbar-nav ms-auto auth-nav">
+                    <!-- Will be populated by auth.js -->
+                </ul>
+                <!-- Theme Toggle -->
+                <div class="theme-toggle-container">
+                    <label class="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="theme-toggle-slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <div class="container">
+            <h1 class="display-4 fw-bold text-white">Travel Tools</h1>
+            <p class="lead text-white">Plan your perfect trip with our helpful tools</p>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <section class="tools-content py-5">
+        <div class="container">
+            <!-- Tools Navigation -->
+            <ul class="nav nav-pills mb-5 justify-content-center" id="tools-tab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="budget-calculator-tab" data-bs-toggle="pill"
+                        data-bs-target="#budget-calculator" type="button" role="tab" aria-controls="budget-calculator"
+                        aria-selected="true">
+                        <i class="fas fa-calculator"></i> Budget Calculator
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="trip-planner-tab" data-bs-toggle="pill" data-bs-target="#trip-planner"
+                        type="button" role="tab" aria-controls="trip-planner" aria-selected="false">
+                        <i class="fas fa-calendar-alt"></i> Trip Planner
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="recommendations-tab" data-bs-toggle="pill"
+                        data-bs-target="#recommendations" type="button" role="tab" aria-controls="recommendations"
+                        aria-selected="false">
+                        <i class="fas fa-lightbulb"></i> Travel Recommendations
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="weather-tab" data-bs-toggle="pill" data-bs-target="#weather"
+                        type="button" role="tab" aria-controls="weather" aria-selected="false">
+                        <i class="fas fa-cloud-sun"></i> Weather & Best Time
+                    </button>
+                </li>
+            </ul>
+
+            <!-- Tools Content -->
+            <div class="tab-content" id="tools-content">
+                <!-- Budget Calculator -->
+                <div class="tab-pane fade show active" id="budget-calculator" role="tabpanel"
+                    aria-labelledby="budget-calculator-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="card shadow-sm">
+                                <div class="card-body p-4">
+                                    <h3 class="card-title text-center mb-4">Travel Budget Calculator</h3>
+                                    <form id="budget-form">
+                                        <div class="mb-3">
+                                            <label for="destination" class="form-label">Destination</label>
+                                            <select class="form-select" id="destination" required>
+                                                <option value="">Select a destination</option>
+                                                <option value="Kyoto">Kyoto</option>
+                                                <option value="Maldives">Maldives</option>
+                                                <option value="Bali">Bali</option>
+                                                <option value="Petra">Petra</option>
+                                                <option value="Costa Rica">Costa Rica</option>
+                                                <option value="Swiss Alps">Swiss Alps</option>
+                                                <option value="Iceland">Iceland</option>
+                                                <option value="Queenstown">Queenstown</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="duration" class="form-label">Duration (days)</label>
+                                            <input type="number" class="form-control" id="duration" min="1" value="7"
+                                                required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="accommodation" class="form-label">Accommodation Type</label>
+                                            <select class="form-select" id="accommodation" required>
+                                                <option value="budget">Budget (Hostels/Shared)</option>
+                                                <option value="midRange">Mid-Range (3-star hotels)</option>
+                                                <option value="luxury">Luxury (4-5 star hotels)</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="food" class="form-label">Food Preference</label>
+                                            <select class="form-select" id="food" required>
+                                                <option value="streetFood">Street Food & Local Markets</option>
+                                                <option value="restaurant">Regular Restaurants</option>
+                                                <option value="premium">Premium Dining</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary w-100">Calculate Budget</button>
+                                    </form>
+
+                                    <!-- Budget Results -->
+                                    <div id="budget-results" class="mt-4 d-none">
+                                        <h4 class="text-center mb-3">Estimated Budget</h4>
+                                        <div class="budget-total text-center mb-3">
+                                            <h2 class="text-primary">RM <span id="total-budget">0</span></h2>
+                                            <p class="text-muted">Total Estimated Cost</p>
+                                        </div>
+
+                                        <div class="budget-breakdown">
+                                            <h5>Budget Breakdown</h5>
+                                            <ul class="list-group">
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Accommodation</span>
+                                                    <span>RM <span id="accommodation-cost">0</span></span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Food</span>
+                                                    <span>RM <span id="food-cost">0</span></span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Transportation</span>
+                                                    <span>RM <span id="transportation-cost">0</span></span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between">
+                                                    <span>Activities</span>
+                                                    <span>RM <span id="activities-cost">0</span></span>
+                                                </li>
+                                            </ul>
+                                        </div>
+
+                                        <div class="budget-tips mt-4">
+                                            <h5>Budget Saving Tips</h5>
+                                            <ul class="list-group" id="budget-tips-list"></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Trip Planner -->
+                <div class="tab-pane fade" id="trip-planner" role="tabpanel" aria-labelledby="trip-planner-tab">
+                    <div class="row">
+                        <!-- Wishlist -->
+                        <div class="col-lg-4 mb-4">
+                            <div class="card shadow-sm h-100">
+                                <div class="card-body">
+                                    <h4 class="card-title">Travel Wishlist</h4>
+                                    <div id="wishlist-container">
+                                        <!-- Wishlist items will be added here -->
+                                    </div>
+                                    <form id="wishlist-form" class="mt-3">
+                                        <div class="input-group">
+                                            <input type="text" class="form-control" placeholder="Add destination"
+                                                id="wishlist-input">
+                                            <button class="btn btn-primary" type="submit">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Trip Planner -->
+                        <div class="col-lg-8">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="card-title">Plan Your Trip</h4>
+                                    <form id="trip-form">
+                                        <div class="row">
+                                            <div class="col-md-6 mb-3">
+                                                <label for="trip-destination" class="form-label">Destination</label>
+                                                <input type="text" class="form-control" id="trip-destination" required>
+                                            </div>
+                                            <div class="col-md-6 mb-3">
+                                                <label for="trip-dates" class="form-label">Travel Dates</label>
+                                                <input type="text" class="form-control" id="trip-dates" required>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="trip-notes" class="form-label">Notes</label>
+                                            <textarea class="form-control" id="trip-notes" rows="3"></textarea>
+                                        </div>
+                                        <div class="d-flex justify-content-between">
+                                            <button type="submit" class="btn btn-primary">Save Trip</button>
+                                            <button type="button" class="btn btn-outline-primary" id="download-pdf">
+                                                <i class="fas fa-download"></i> Download PDF
+                                            </button>
+                                        </div>
+                                    </form>
+
+                                    <!-- Saved Trips -->
+                                    <div id="saved-trips" class="mt-4">
+                                        <h5>Your Planned Trips</h5>
+                                        <div class="list-group" id="trips-list">
+                                            <!-- Trips will be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Travel Recommendations -->
+                <div class="tab-pane fade" id="recommendations" role="tabpanel" aria-labelledby="recommendations-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center mb-4">Get Travel Recommendations</h4>
+                                    <form id="recommendations-form">
+                                        <!-- Interests -->
+                                        <div class="mb-4">
+                                            <label class="form-label">What interests you? (Select all that
+                                                apply)</label>
+                                            <div class="row g-3">
+                                                <div class="col-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="interests"
+                                                            value="beaches" id="beaches">
+                                                        <label class="form-check-label" for="beaches">
+                                                            <i class="fas fa-umbrella-beach me-2"></i>Beaches
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="interests"
+                                                            value="mountains" id="mountains">
+                                                        <label class="form-check-label" for="mountains">
+                                                            <i class="fas fa-mountain me-2"></i>Mountains
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="interests"
+                                                            value="adventure" id="adventure">
+                                                        <label class="form-check-label" for="adventure">
+                                                            <i class="fas fa-hiking me-2"></i>Adventure
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="interests"
+                                                            value="history" id="history">
+                                                        <label class="form-check-label" for="history">
+                                                            <i class="fas fa-landmark me-2"></i>History
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="interests"
+                                                            value="culture" id="culture">
+                                                        <label class="form-check-label" for="culture">
+                                                            <i class="fas fa-theater-masks me-2"></i>Culture
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" name="interests"
+                                                            value="nature" id="nature">
+                                                        <label class="form-check-label" for="nature">
+                                                            <i class="fas fa-tree me-2"></i>Nature
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Budget -->
+                                        <div class="mb-4">
+                                            <label class="form-label">What's your budget level?</label>
+                                            <div class="row g-3">
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="budget"
+                                                            value="low" id="budget-low">
+                                                        <label class="form-check-label" for="budget-low">
+                                                            <i class="fas fa-dollar-sign me-2"></i>Budget
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="budget"
+                                                            value="medium" id="budget-medium" checked>
+                                                        <label class="form-check-label" for="budget-medium">
+                                                            <i class="fas fa-dollar-sign me-2"></i><i
+                                                                class="fas fa-dollar-sign me-2"></i>Moderate
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="radio" name="budget"
+                                                            value="high" id="budget-high">
+                                                        <label class="form-check-label" for="budget-high">
+                                                            <i class="fas fa-dollar-sign me-2"></i><i
+                                                                class="fas fa-dollar-sign me-2"></i><i
+                                                                class="fas fa-dollar-sign"></i>Luxury
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Season -->
+                                        <div class="mb-4">
+                                            <label for="season" class="form-label">When do you plan to travel?</label>
+                                            <select class="form-select" name="season" id="season">
+                                                <option value="spring">Spring (March - May)</option>
+                                                <option value="summer">Summer (June - August)</option>
+                                                <option value="fall">Fall (September - November)</option>
+                                                <option value="winter">Winter (December - February)</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-primary">Get Recommendations</button>
+                                        </div>
+                                    </form>
+
+                                    <!-- Recommendations Results -->
+                                    <div id="recommendation-results" class="mt-4 d-none">
+                                        <h5>Recommended Destinations</h5>
+                                        <div class="row" id="recommendations-container">
+                                            <!-- Recommendations will be added here -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Weather & Best Time -->
+                <div class="tab-pane fade" id="weather" role="tabpanel" aria-labelledby="weather-tab">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-8">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="card-title text-center mb-4">Weather Information</h4>
+                                    <form id="weather-form">
+                                        <div class="mb-3">
+                                            <label for="weather-city" class="form-label">Select a City</label>
+                                            <select class="form-select" id="weather-city" required>
+                                                <option value="">Select a city</option>
+                                                <option value="Bali,ID">Bali, Indonesia</option>
+                                                <option value="Kyoto,JP">Kyoto, Japan</option>
+                                                <option value="Swiss Alps,CH">Swiss Alps</option>
+                                                <option value="Costa Rica,CR">Costa Rica</option>
+                                                <option value="Rome,IT">Rome, Italy</option>
+                                                <option value="New Zealand,NZ">New Zealand</option>
+                                                <option value="Morocco,MA">Morocco</option>
+                                                <option value="Maldives,MV">Maldives</option>
+                                            </select>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="weather-date" class="form-label">Select Date</label>
+                                            <input type="date" class="form-control" id="weather-date" required>
+                                        </div>
+                                        <button class="btn btn-primary w-100" type="submit">Check Weather</button>
+                                    </form>
+
+                                    <!-- Weather Results -->
+                                    <div id="weather-results" class="mt-4 d-none">
+                                        <div class="current-weather text-center mb-4">
+                                            <div class="weather-icon mb-2">
+                                                <img id="weather-icon" src="" alt="Weather Icon">
+                                            </div>
+                                            <h2 id="temperature">--°C</h2>
+                                            <p id="weather-description" class="text-muted">--</p>
+                                        </div>
+
+                                        <div class="weather-details">
+                                            <div class="row">
+                                                <div class="col-6 mb-3">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h6>Humidity</h6>
+                                                            <p id="humidity" class="mb-0">--%</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-6 mb-3">
+                                                    <div class="card">
+                                                        <div class="card-body">
+                                                            <h6>Wind Speed</h6>
+                                                            <p id="wind-speed" class="mb-0">-- km/h</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="best-time-to-visit mt-4">
+                                            <h5>Best Time to Visit</h5>
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <p id="best-months" class="mb-2">Best months: <span>--</span></p>
+                                                    <p id="visit-reason" class="mb-0 text-muted">--</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4 mb-lg-0">
+                    <h5 class="text-white">Explore the World</h5>
+                    <p class="text-muted">Your ultimate guide to discovering the world's most beautiful destinations,
+                        travel
+                        tips, and cultural insights.🌍✨</p>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/exploretheworld.151375?mibextid=wwXIfr&rdid=tDgGR4odQE0hs0mX&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F165fckGWBd%2F%3Fmibextid%3DwwXIfr#" target="_blank" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/exploretheworld_2323/" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-white">Quick Links</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="destinations.html">Destinations</a></li>
+                        <li><a href="travel-tips.html">Travel Tips</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-4 mb-4 mb-md-0">
+                    <h5 class="text-white">Resources</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="packing-essentials.html">Packing Guides</a></li>
+                        <li><a href="travel-insurance.html">Travel Insurance</a></li>
+                        <li><a href="contact.html#faqs">FAQs</a></li>
+                        <li><a href="contact.html#privacy">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-4">
+                    <h5 class="text-white">Contact Us</h5>
+                    <ul class="list-unstyled contact-info">
+                        <li class="mb-3">
+                            <strong class="d-block mb-1">Sungai Long Campus:</strong>
+                            <i class="fas fa-map-marker-alt"></i> Universiti Tunku Abdul Rahman, Jalan Sungai Long,
+                            Bandar Sungai Long, 43000 Kajang, Selangor, Malaysia
+                        </li>
+                        <li class="mb-3">
+                            <strong class="d-block mb-1">Kampar Campus:</strong>
+                            <i class="fas fa-map-marker-alt"></i> Universiti Tunku Abdul Rahman, Jalan Universiti,
+                            Bandar Barat, 31900 Kampar, Perak, Malaysia
+                        </li>
+                        <li><i class="fas fa-phone"></i> +603-9086 0288 (Sungai Long)</li>
+                        <li><i class="fas fa-phone"></i> +605-468 8888 (Kampar)</li>
+                        <li><i class="fas fa-envelope"></i> info@utar.edu.my</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright">© 2025 Explore the World. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Date Range Picker Dependencies - Moment.js MUST be loaded before daterangepicker -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <!-- jsPDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/theme.js"></script>
+
+    <!-- Individual tool scripts -->
+    <script src="js/budget_calculator.js"></script>
+    <script src="js/trip_planner.js"></script>
+    <script src="js/weather.js"></script>
+    <script src="js/travel_recommendations.js"></script>
+
+    <!-- Add this JavaScript to make the tab navigation work properly -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Bootstrap's tab functionality
+            var tabElms = document.querySelectorAll('button[data-bs-toggle="pill"]');
+            tabElms.forEach(function (tabElm) {
+                tabElm.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    var targetTab = document.querySelector(this.getAttribute('data-bs-target'));
+
+                    // Remove active class from all tab panes
+                    document.querySelectorAll('.tab-pane').forEach(function (pane) {
+                        pane.classList.remove('show', 'active');
+                    });
+
+                    // Remove active class from all tabs
+                    document.querySelectorAll('button[data-bs-toggle="pill"]').forEach(function (tab) {
+                        tab.classList.remove('active');
+                    });
+
+                    // Add active class to clicked tab and its target pane
+                    this.classList.add('active');
+                    targetTab.classList.add('show', 'active');
+
+                    // Scroll to the tab content
+                    // targetTab.scrollIntoView({behavior: 'smooth'});
+                });
+            });
+
+            // Optional: Initialize date picker for trip planner
+            if ($.fn.daterangepicker && document.getElementById('trip-dates')) {
+                $('#trip-dates').daterangepicker({
+                    opens: 'center',
+                    locale: {
+                        format: 'MM/DD/YYYY'
+                    }
+                });
+            }
+        });
+    </script>
+
+    <!-- Firebase Scripts -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-app.js";
+        import { getAuth } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-auth.js";
+        import { getFirestore } from "https://www.gstatic.com/firebasejs/11.4.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAb6bp6ot5tWz16b1qJzv_30VxJR87nzW8",
+            authDomain: "gallery-1609e.firebaseapp.com",
+            projectId: "gallery-1609e",
+            storageBucket: "gallery-1609e.firebasestorage.app",
+            messagingSenderId: "616484716286",
+            appId: "1:616484716286:web:2cdfe99e8698e03687afaf",
+            measurementId: "G-F4VM09MT90"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        window.auth = getAuth(app);
+        window.db = getFirestore(app);
+    </script>
+
+    <!-- Auth and User Profile Scripts -->
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/user-profile.js"></script>
+</body>
+
+</html>
