@@ -1,0 +1,138 @@
+/* Typography improvements for all pages */
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #333;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.lead {
+    font-weight: 400;
+    font-size: 1.2rem;
+    letter-spacing: 0.01em;
+}
+
+/* Page header text styling */
+.page-header h1,
+.tips-page-header h1,
+.destination-header h1,
+.gallery-header h1,
+.contact-header h1 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 800;
+}
+
+.page-header p.lead,
+.tips-page-header p.lead,
+.destination-header p.lead,
+.gallery-header p.lead,
+.contact-header p.lead {
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Card elements */
+.card-title {
+    font-weight: 700;
+    line-height: 1.4;
+    color: #2c3e50;
+}
+
+.card-text {
+    line-height: 1.6;
+}
+
+/* Button improvements */
+.btn {
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    padding: 0.5rem 1.25rem;
+}
+
+/* Category badges and tags */
+.category-badge {
+    font-weight: 500;
+    letter-spacing: 0.03em;
+}
+
+/* Section headings */
+.section-title {
+    font-size: 2.2rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+}
+
+/* Footer improvements */
+.footer h5 {
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 1.25rem;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    font-weight: 500;
+}
+
+.contact-info li {
+    margin-bottom: 0.75rem;
+    line-height: 1.5;
+}
+
+.copyright {
+    font-weight: 500;
+}
+
+/* Dark mode overrides */
+body[data-theme="dark"] {
+    color: #f1f1f1;
+}
+
+body[data-theme="dark"] .card-title {
+    color: #f1f1f1;
+}
+
+body[data-theme="dark"] .section-title {
+    color: var(--text-color);
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    body {
+        font-size: 15px;
+    }
+    
+    .lead {
+        font-size: 1.1rem;
+    }
+    
+    .section-title {
+        font-size: 1.8rem;
+    }
+    
+    .card-title {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .section-title {
+        font-size: 1.6rem;
+    }
+} 

@@ -1,0 +1,750 @@
+/* Destination main page */
+.destination-page-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+}
+  
+.destination-page-card {
+    width: 500px;
+    height: 300px;
+    border-radius: 25px;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 20px;
+    position: relative;
+    box-shadow: 10 10px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    gap: 10px;
+    max-width: 100%
+}
+
+/* Hover Effect */
+.destination-page-card:hover {
+    transform: scale(1.02);
+    box-shadow: 6px 8px 14px rgba(0, 0, 0, 0.4);
+}
+
+.page-card-title {
+    font-size: 22px;
+    font-weight: bold;
+}
+  
+.page-card-desc {
+    font-size: 18px;
+    color: rgba(255, 255, 255, 0.9);
+}
+  
+.explore-button {
+    align-self: flex-start;
+    background-color: #FFD700;
+    color: black;
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+  
+.explore-button:hover {
+    background-color: #e6c200;
+}
+
+/* Travel Tips Page Header*/
+.tips-page-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+/* Packing Guide */
+.pack-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1553913861-c0fddf2619ee?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+.travel-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: auto;
+}
+
+.image-section {
+    flex: 1 1 300px;
+    text-align: center;
+    margin-top: 40px;
+}
+  
+.image-section img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+}
+  
+
+.travel-tip-section {
+    flex: 1.2;
+    max-width: 100%;
+}
+
+.background-section {
+    display: flex;
+    max-width: 100%;
+    margin-top: 20px;
+}
+  
+.left-section, .right-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100%;
+}
+  
+.left-section {
+    background: url("https://images.unsplash.com/photo-1590602391331-45262cb1cb87?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") 
+    no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+}
+  
+.right-section {
+    background: url("https://images.unsplash.com/photo-1535866658354-f97cfb9d889b?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D") 
+    no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    position: relative;
+}
+  
+/* Styling for headers */
+h2 {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+  
+/* Styling for the lists */
+.custom-list {
+    list-style-type: none;
+    padding: 0;
+    max-width: 100%;
+}
+  
+.custom-list li {
+    font-size: 18px;
+    margin: 20px;
+    position: relative;
+    padding-left: 25px;
+    color: white;
+}
+  
+ /* Custom the bullet point */
+.custom-list li::before {
+    content: "✅"; 
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    left: -5px;
+}
+
+.tips-info {
+    background-color: rgba(83, 76, 76, 0.5); /* Dark background with 50% transparency */
+    color: white;
+    padding: 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    text-align: center;
+    max-width: 100%;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .background-section {
+      flex-direction: column;
+    }
+  
+    .left-section,
+    .right-section {
+      padding: 30px;
+      min-height: 300px;
+    }
+  
+    h2 {
+      font-size: 24px;
+    }
+  
+    .custom-list li {
+      font-size: 16px;
+      margin: 15px;
+    }
+  
+    .tips-info {
+      font-size: 15px;
+    }
+  }
+  
+@media (max-width: 600px) {
+    .left-section,
+    .right-section {
+      padding: 20px;
+    }
+  
+    h2 {
+      font-size: 20px;
+    }
+  
+    .custom-list li {
+      font-size: 14px;
+      margin: 12px;
+    }
+  
+    .tips-info {
+      font-size: 14px;
+    }
+}
+  
+.tips-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 60px;
+    max-width: 100%;
+    margin-top: 60px;
+    margin: center;
+    margin-bottom: 30px;
+}
+
+/* Budget Travel Hacks */
+.budget-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1554774853-719586f82d77?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+/* Tip Boxes */
+.tip {
+    width: 400px;
+    height: 300px;
+    border-radius: 50px; /* Oval shape */
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Dark Overlay for Better Readability */
+.tip::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+}
+
+.tip-number {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 28px;
+    font-weight: bold;
+    color: #ffdd57;
+    z-index: 2;
+}
+
+.tip-text {
+    position: relative;
+    z-index: 2;
+    padding: 10px;
+}
+
+.desc {
+    padding-left: 15px;
+    padding-right: 15px;
+    color:rgb(255, 255, 255);
+}
+
+/* Hover Effect */
+.tip:hover {
+    transform: scale(1.10);
+    box-shadow: 6px 8px 14px rgba(0, 0, 0, 0.4);
+}
+
+/*Responsiveness */
+@media (max-width: 1024px) {
+    .tips-container {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+  
+    .tip {
+      width: 100%;
+      height: auto;
+    }
+}
+  
+@media (max-width: 600px) {
+    .tips-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  
+    .tip {
+      width: 100%;
+      height: auto;
+      border-radius: 30px;
+      font-size: 16px;
+    }
+  
+    .tip-number {
+      font-size: 22px;
+    }
+}
+
+/* Food Culture */
+.food-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+/* Tip Boxes */
+.tip-oval {
+    width: 600px;
+    height: 300px;
+    border-radius: 50px; /* Oval shape */
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 4px 6px 12px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 40px;
+}
+
+/* Dark Overlay for Better Readability */
+.tip-oval::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay */
+    z-index: 1;
+}
+
+/* Hover Effect */
+.tip-oval:hover {
+    transform: scale(1.05);
+    box-shadow: 6px 8px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .tip-oval {
+      width: 90%;
+      height: auto;
+      padding: 40px 20px;
+      font-size: 18px;
+      border-radius: 40px;
+    }
+}
+  
+@media (max-width: 600px) {
+    .tip-oval {
+      width: 100%;
+      height: auto;
+      padding: 30px 15px;
+      font-size: 16px;
+      border-radius: 30px;
+    }
+}
+
+/* Solo Safety */
+.safety-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1488085061387-422e29b40080?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+.safety-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 15px;
+    margin-top:15px;
+    height: 200vh;
+}
+
+.safety-background-section {
+    display: flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    font-size:20px;
+    font-weight: bold;
+    text-align:center;
+    padding: 30px;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .safety-container {
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-template-rows: repeat(6, 1fr); /* 6 rows for more flexibility */
+      height: auto;
+      gap: 20px;
+    }
+  
+    .safety-background-section {
+      padding: 20px;
+      font-size: 18px;
+    }
+}
+
+@media (max-width: 600px) {
+    .safety-container {
+      grid-template-columns: 1fr; /* 1 column */
+      grid-template-rows: repeat(12, 1fr); /* Adjusts height for single-column */
+      gap: 15px;
+      height: auto;
+    }
+  
+    .safety-background-section {
+      padding: 15px;
+      font-size: 16px;
+    }
+}
+  
+/* Photography */
+.photo-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+/* Accommodation */
+.accommodation-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+/* Transportation */
+.transportation-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1530521954074-e64f6810b32d?auto=format&fit=crop&w=800&q=80");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+/* Insurance */
+.insurance-header {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    url("https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+    text-align: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    color: white;
+    padding: 150px 0 80px;
+}
+
+.body-insurance {
+    background-color: #1e293b; 
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 40px;
+}
+  
+.container-insurance {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: #666f84;
+    border-radius: 16px;
+    padding: 24px;
+    max-width: 100%;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+  
+.side-image-insurance {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+  
+.info-box-insurance {
+    flex: 1;
+}
+  
+.number-insurance {
+    font-size: 24px;
+    font-weight: bold;
+    color: #15fac8;
+    margin-bottom: 10px;
+}
+  
+.title-insurance {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+  
+.description-insurance {
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+    .container-insurance {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 20px;
+    }
+  
+    .side-image-insurance {
+      width: 100%;
+      height: auto;
+      margin-bottom: 16px;
+    }
+  
+    .number-insurance {
+      font-size: 22px;
+    }
+  
+    .title-insurance {
+      font-size: 18px;
+    }
+  
+    .description-insurance {
+      font-size: 15px;
+    }
+}
+  
+@media (max-width: 600px) {
+    .number-insurance {
+      font-size: 20px;
+    }
+  
+    .title-insurance {
+      font-size: 16px;
+    }
+  
+    .description-insurance {
+      font-size: 14px;
+    }
+  
+    .container-insurance {
+      padding: 16px;
+    }
+}
+  
+  
+/* Dark mode support for destination page */
+body[data-theme="dark"] .destination-page-container {
+    background-color: var(--bg-color);
+}
+
+body[data-theme="dark"] .destination-page-card {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+}
+
+body[data-theme="dark"] .destination-page-card::before {
+    background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
+}
+
+body[data-theme="dark"] .page-card-title,
+body[data-theme="dark"] .page-card-desc {
+    color: #f1f1f1;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+body[data-theme="dark"] .explore-button {
+    background-color: rgba(52, 152, 219, 0.9);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] .explore-button:hover {
+    background-color: rgba(41, 128, 185, 1);
+}
+
+/* Dark mode for tips page */
+body[data-theme="dark"] .tips-page-header {
+    background-color: #1a202c;
+}
+
+body[data-theme="dark"] .tip-categories {
+    background-color: var(--bg-color);
+}
+
+body[data-theme="dark"] .category-badge {
+    background-color: #2d3748 !important;
+    color: #e2e8f0 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+body[data-theme="dark"] .category-badge:hover,
+body[data-theme="dark"] .category-badge.active {
+    background-color: var(--primary-color) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+body[data-theme="dark"] .card-img-wrapper.loading {
+    background: linear-gradient(90deg, #2d3748 25%, #4a5568 50%, #2d3748 75%);
+}
+
+body[data-theme="dark"] .tip-category {
+    background-color: rgba(52, 152, 219, 0.2);
+    color: #60a5fa;
+}
+
+body[data-theme="dark"] .tip-meta {
+    color: #a0aec0;
+}
+
+body[data-theme="dark"] .tip-meta i {
+    color: #60a5fa;
+}
+  

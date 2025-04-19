@@ -1,0 +1,462 @@
+/* Travel Tools Page Styles */
+.tools-section {
+    padding: 2rem 0;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+.tool-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+}
+
+.tool-card h3 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+}
+
+.tool-card .form-label {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+/* Budget Calculator Styles */
+#budget-results {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.budget-breakdown {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin: 1.5rem 0;
+}
+
+.budget-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 6px;
+}
+
+.budget-item h4 {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.budget-item .amount {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Trip Planner Styles */
+.wishlist-container {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 1rem;
+    background-color: var(--bg-color);
+    border-radius: 6px;
+}
+
+.trip-item {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.trip-item:hover {
+    background-color: var(--hover-bg);
+}
+
+.trip-item.selected {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Travel Recommendations Styles */
+.recommendations-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.destination-card {
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--card-bg);
+}
+
+.destination-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.destination-card .card-content {
+    padding: 1rem;
+}
+
+.destination-card h5 {
+    margin: 0;
+    color: var(--heading-color);
+}
+
+/* Weather Information Styles */
+.weather-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-top: 1.5rem;
+}
+
+.weather-info {
+    text-align: center;
+    padding: 1rem;
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    min-width: 200px;
+}
+
+.weather-icon {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.5rem;
+}
+
+.temperature {
+    font-size: 2rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.weather-description {
+    color: var(--text-muted);
+    text-transform: capitalize;
+}
+
+.weather-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    text-align: left;
+}
+
+.weather-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.weather-detail i {
+    color: var(--primary-color);
+}
+
+/* Best Time to Visit Styles */
+.best-time {
+    background-color: var(--card-bg);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.best-time h4 {
+    color: var(--heading-color);
+    margin-bottom: 1rem;
+}
+
+.best-months {
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .budget-breakdown {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .recommendations-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .weather-display {
+        flex-direction: column;
+    }
+    
+    .weather-info {
+        width: 100%;
+    }
+}
+
+/* Dark Mode Support */
+body[data-theme="dark"] .tool-card {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 6px var(--shadow-color);
+}
+
+body[data-theme="dark"] .tool-card:hover {
+    box-shadow: 0 6px 12px var(--shadow-color);
+}
+
+body[data-theme="dark"] .tool-card h3 {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-card p {
+    color: var(--text-light);
+}
+
+body[data-theme="dark"] .tool-card .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body[data-theme="dark"] .tool-card .btn-primary:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+body[data-theme="dark"] .tool-description {
+    color: var(--text-light);
+}
+
+body[data-theme="dark"] .tool-features {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-features li {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-features li::before {
+    color: var(--primary-color);
+}
+
+body[data-theme="dark"] .tool-cta {
+    background-color: var(--bg-secondary);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-cta .btn {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: #ffffff;
+}
+
+body[data-theme="dark"] .tool-cta .btn:hover {
+    background-color: var(--primary-hover);
+    border-color: var(--primary-hover);
+}
+
+body[data-theme="dark"] .tool-section {
+    background-color: var(--bg-color);
+}
+
+body[data-theme="dark"] .tool-section h2 {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-section p {
+    color: var(--text-light);
+}
+
+body[data-theme="dark"] .tool-grid {
+    background-color: var(--bg-color);
+}
+
+body[data-theme="dark"] .tool-filter {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-filter input,
+body[data-theme="dark"] .tool-filter select {
+    background-color: var(--input-bg);
+    border-color: var(--input-border);
+    color: var(--input-text);
+}
+
+body[data-theme="dark"] .tool-filter input:focus,
+body[data-theme="dark"] .tool-filter select:focus {
+    background-color: var(--input-bg);
+    border-color: var(--primary-color);
+    color: var(--input-text);
+}
+
+body[data-theme="dark"] .tool-pagination {
+    background-color: var(--card-bg);
+}
+
+body[data-theme="dark"] .tool-pagination .page-link {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-pagination .page-item.active .page-link {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+body[data-theme="dark"] .tool-modal .modal-content {
+    background-color: var(--modal-bg);
+    border-color: var(--modal-border);
+}
+
+body[data-theme="dark"] .tool-modal .modal-header,
+body[data-theme="dark"] .tool-modal .modal-footer {
+    border-color: var(--modal-border);
+}
+
+body[data-theme="dark"] .tool-modal .modal-title {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-modal .modal-body {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-modal .btn-close {
+    filter: invert(1);
+}
+
+body[data-theme="dark"] .tool-tooltip {
+    background-color: var(--tooltip-bg);
+    color: var(--tooltip-text);
+}
+
+body[data-theme="dark"] .tool-alert {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-badge {
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+body[data-theme="dark"] .tool-progress {
+    background-color: var(--bg-secondary);
+}
+
+body[data-theme="dark"] .tool-progress-bar {
+    background-color: var(--primary-color);
+}
+
+body[data-theme="dark"] .tool-list-group {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-list-group-item {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-accordion .accordion-button {
+    background-color: var(--card-bg);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-accordion .accordion-button:not(.collapsed) {
+    background-color: var(--bg-secondary);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-accordion .accordion-item {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-tabs .nav-tabs .nav-link {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-tabs .nav-tabs .nav-link.active {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-popover {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-popover .popover-header {
+    background-color: var(--bg-secondary);
+    border-bottom-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-popover .popover-body {
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-toast {
+    background-color: var(--card-bg);
+    border-color: var(--border-color);
+}
+
+body[data-theme="dark"] .tool-toast .toast-header {
+    background-color: var(--bg-secondary);
+    border-bottom-color: var(--border-color);
+    color: var(--text-color);
+}
+
+body[data-theme="dark"] .tool-toast .toast-body {
+    color: var(--text-color);
+}
+
+/* CSS Variables */
+:root {
+    --primary-color: #007bff;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #212529;
+    --text-muted: #6c757d;
+    --heading-color: #343a40;
+    --border-color: #dee2e6;
+    --hover-bg: #e9ecef;
+    
+    /* Dark Mode Variables */
+    --dark-bg-color: #1a1a1a;
+    --dark-card-bg: #2d2d2d;
+    --dark-text-color: #e1e1e1;
+    --dark-heading-color: #ffffff;
+    --dark-border-color: #404040;
+    --dark-hover-bg: #404040;
+}
+
+/* Dark Mode Overrides */
+[data-theme="dark"] {
+    --bg-color: var(--dark-bg-color);
+    --card-bg: var(--dark-card-bg);
+    --text-color: var(--dark-text-color);
+    --heading-color: var(--dark-heading-color);
+    --border-color: var(--dark-border-color);
+    --hover-bg: var(--dark-hover-bg);
+} 

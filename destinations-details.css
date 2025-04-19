@@ -1,0 +1,302 @@
+.layout_padding {
+    padding-top: 90px;
+    padding-bottom: 90px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif; /* Example */
+}
+
+
+/* banner section start */
+.banner-container {
+    width: 100%;
+    float: left;
+    background-image: url(../images/travel.jpg);
+    height: auto;
+    background-size: cover;
+    padding: 0px;
+    background-position:center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align:center;
+}
+
+.banner_section {
+    width: 100%;
+    float: left;
+    background-color:#658697;
+    height: auto;
+    background-size: 100%;
+    padding-bottom:30px;
+    padding-top:30px;
+ 
+}
+
+.banner_text {
+    width: 100%;
+    float: left;
+    padding: 150px 0px;
+}
+/* banner section end */
+
+
+/* about section start */
+.about_section{
+    background-color:#2a4859
+}
+
+.about_section_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 20px 0; 
+}
+
+.about_taital {
+    width: 100%;
+    float: left;
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.about_text {
+    width: 100%;
+    float: left;
+    font-size: 20px;
+    color: #000000;
+    margin: 0px;
+    text-align: center;
+}
+
+.house_icon {
+    width: 100%;
+    max-width: 200px; 
+    height: auto; 
+    border-radius: 100%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.house_icon img {
+    width: 100%;
+    min-height: auto;
+}
+
+.box_main:hover .house_icon .image_1 {
+    display: none;
+}
+
+.box_main:hover {
+    background-color: #3a5c70;
+}
+
+.box_main {
+    width: 100%;
+    background-color: #658697;
+    margin: 10px -10px 10px 0px;
+    padding: 30px 20px 20px 20px;
+    box-shadow: 0px 0px 18px -6px;
+    border-radius:30px;
+
+}
+
+.box_main:hover .decorate_text {
+    color: #000;
+}
+
+
+.about_section_2 .row {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: space-between; 
+    align-items: flex-start;
+}
+
+.about_section_2 .col12 {
+    flex: 1 1 30%;
+    max-width: 30%;
+    padding: 10px;
+    box-sizing:border-box;
+}
+
+.decorate_text {
+    width: 100%;
+    font-size: 28px;
+    color: #ffffff;
+    padding-top: 30px;
+    text-align: center;
+    font-weight:bold;
+}
+
+.description_text {
+    width: 100%;
+    font-size: 14px;
+    color: #ffffff;
+    margin: 0px;
+    text-align: center;
+}
+/* about section end */
+
+
+/* culture section start */
+.culture_section {
+    width: 100%;
+    float: left;
+    height: auto;
+    background-size: cover;
+    padding-top: 0px;
+    padding-bottom: 30px;
+    background-image: url(../images/travel2.jpg);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align:center;
+
+}
+
+.culture_taital {
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.culture_text {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 0px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.culture_boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.culture_box {
+    background-color: rgba(109, 104, 104, 0.611); 
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+    font-weight:bold;
+}
+
+.culture_taital_main {
+    width: 100%;
+    float: left;
+    padding: 20px 0px;
+}
+
+.culture_img {
+    margin-top: 0px;
+}
+
+.culture_section .container .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.culture_section .culture_img img {
+    width: 100%;
+    height: auto;
+    border-radius: 50px; 
+    float:right;
+}
+/* culture section end */
+
+/* funfact section start */
+.funfact_section {
+    background: linear-gradient(to top, #2a4859, #ffffff); 
+}
+
+.funfact_taital {
+    font-size: 40px;
+    color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+    padding-top: 20px;
+}
+
+.funfact_text {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.funfact_boxes {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.funfact_box {
+    background-color: rgba(119, 183, 208, 0.319); 
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
+    text-align: center;
+    font-weight: bold;
+}
+
+.funfact_taital_main {
+    width: 100%;
+    float: right;
+    padding: 20px 0px;
+}
+
+.funfact_img {
+    margin-top: 0px;
+}
+
+.funfact_section .container .row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.funfact_section .funfact_img img {
+    width: 100%;
+    height: auto;
+    border-radius: 50px; 
+    float:right;
+}
+/* funfact section end */
+
+/*button section start*/
+.button {
+    display: inline-block;
+    text-decoration: none;
+    color: white; /* Adjust color as needed */
+    background-color: #007BFF; /* Button background */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.button:hover {
+    background-color: #666666; /* Darker shade for hover effect */
+}
+
+.button-container {
+    position: fixed; /* Positions the button container */
+    bottom: 20px; /* Distance from the bottom of the page */
+    left: 50%; /* Aligns the button horizontally */
+    transform: translateX(-50%); /* Centers the button */
+}
+
+/*button section start*/
